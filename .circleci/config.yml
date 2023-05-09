@@ -5,9 +5,11 @@ workflows:
   use-my-orb:
     jobs:
       - cypress/run:
-          cypress-command: npx cypress run --browser chrome
-          install-browsers: true
-          start-command: npm run start:dev
+          cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
+          cypress-cache-path: ~/.cache/custom-dir/Cypress
+          cypress-command: npx cypress run --component
+          node-cache-version: v2
+
 
 
 
