@@ -1,9 +1,21 @@
-version: '2.1'
+version: 2.1
+
 orbs:
-  cypress: cypress-io/cypress@3
+  node: circleci/node@x.y
+
+jobs:
+  install-node-example:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - node/install:
+          install-yarn: true
+          node-version: '16.13'
+      - run: node --version
 workflows:
-  use-my-orb:
+  test_my_app:
     jobs:
-      - cypress/run:
-          start-command: npm run start
+      - install-node-example
+
 
