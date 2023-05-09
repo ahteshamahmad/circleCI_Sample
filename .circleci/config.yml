@@ -1,11 +1,16 @@
-version: 2.1
-workflows:
-  testing:
-    jobs:
-      - runner-test
+version: '2.1'
+orbs:
+  kubernetes: circleci/kubernetes@1.3.1
 jobs:
-  runner-test:
-    machine: true
-    resource_class: ahteshamahmad/rhl_system_runner
+  delete:
+    docker:
+      - image: cimg/base:stable
     steps:
-      - run: echo "Hi I'm on Runners!"
+      - kubernetes/install-kubectl
+      - kubernetes/delete-resource:
+          now: true
+          resource-names: nginx-deployment
+          resource-types: deployments
+          wait: true
+workflows: null
+
