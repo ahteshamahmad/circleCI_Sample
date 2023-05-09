@@ -1,15 +1,30 @@
-version: '2.1'
-orbs:
-  cypress: cypress-io/cypress@3
-workflows:
-  use-my-orb:
-    jobs:
-      - cypress/run:
-          cypress-cache-key: custom-cypress-cache-v1-{{ arch }}-{{ checksum "package.json" }}
-          cypress-cache-path: ~/.cache/custom-dir/Cypress
-          cypress-command: npx cypress run --component
-          node-cache-version: v2
+# orb.yml
+version: 2.1
 
+orbs:
+  my-orb:
+    description: "A simple orb"
+    commands:
+      my-command:
+        description: "My command"
+        parameters:
+          my-param:
+            type: string
+            default: "default_value"
+        steps:
+          - run: echo "My command was executed with param: ${{ orb.parameters.my-param }}"
+
+workflows:
+  my-workflow:
+    jobs:
+      - my-job
+
+jobs:
+  my-job:
+    executor: my-orb/default
+    steps:
+      - my-orb/my-command:
+          my-param: "custom_value"
 
 
 
