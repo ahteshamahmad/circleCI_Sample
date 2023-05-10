@@ -9,7 +9,6 @@ jobs:
       - image: cimg/base:stable
     steps:
       - kubernetes/install-kubectl
-          now: true
           resource-names: nginx-deployment
           resource-types: deployments
           wait: true
