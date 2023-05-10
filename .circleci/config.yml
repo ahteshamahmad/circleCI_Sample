@@ -10,11 +10,6 @@ jobs:
     steps:
       - checkout
       - kubernetes/install-kubectl
-      - kubernetes/create-or-update-resource:
-          get-rollout-status: true
-          resource-file-path: tests/nginx-deployment/deployment.yaml
-          resource-name: deployment/nginx-deployment
-          show-kubectl-command: true
 workflows:
   test_my_app:
     jobs:
