@@ -9,7 +9,6 @@ jobs:
       - image: cimg/base:stable
     steps:
       - kubernetes/install-kubectl
-      - kubernetes/delete-resource:
           now: true
           resource-names: nginx-deployment
           resource-types: deployments
