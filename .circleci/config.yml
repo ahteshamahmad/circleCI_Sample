@@ -2,14 +2,14 @@ version: 2.1
 orbs:
   my-orb: ahteshamahmad/job-build-deploy@0.0.1
 jobs:
-  Ahtesham-job:
+  ahtesham-job:
     resource_class: ahteshamahmad/rhl_system_runner
     machine:
       image: ubuntu-2004:202201-01
     steps:
-      run: echo "Hello Md Ahtesham"
+      - run: echo "Hello Md Ahtesham"
 workflows:
   my-workflow:
     jobs:
-      - Ahtesham-job
+      - ahtesham-job
 
