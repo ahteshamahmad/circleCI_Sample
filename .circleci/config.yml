@@ -1,10 +1,15 @@
 version: 2.1
 orbs:
-  my-orb: my-orb@1.0.0
+  my-orb: ahteshamahmad/job-build-deploy@0.0.1
 jobs:
-  my-job:
-    executor: my-executor
+  Ahtesham-job:
+    resource_class: ahteshamahmad/rhl_system_runner
+    machine:
+      image: ubuntu-2004:202201-01
     steps:
-      - my-orb/my-command:
-          message: "Hello, CircleCI!"
+      run: echo "Hello Md Ahtesham"
+workflows:
+  my-workflow:
+    jobs:
+      - Ahtesham-job
 
